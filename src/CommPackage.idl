@@ -1,0 +1,6 @@
+module Comm {
+	interface CommPackage{
+		string get_route( in string source,in string destination);
+		oneway void shutdown();
+	};
+};

@@ -1,0 +1,10 @@
+#ECP Compilation Preferences
+#Fri Oct 11 16:46:52 CDT 2013
+.INVOKE_COMPILERS=net.sf.eclipscorba.compiler.openorb
+.GENERATE_SKELETONS=true
+.CUSTOM_OPTIONS=false
+.INCLUDE_PATHS=
+.GENERATE_STUBS=true
+.GENERATE_TIES=true
+.COMPILE=false
+.OUTPUT_DIRECTORY=
