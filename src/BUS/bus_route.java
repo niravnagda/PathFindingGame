@@ -1,4 +1,4 @@
-package train_route;
+package BUS;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,12 +11,12 @@ import java.util.logging.Logger;
 import org.omg.CORBA.ORB;
 import Comm.*;
 
-public class train_route extends CommPackagePOA{
+public class bus_route extends CommPackagePOA{
 
 	private Connection conn = null; //connection string
 	private Statement st = null; //Query statement 
 	private ResultSet rs = null; //Query result set
-	private String ser = "jdbc:mysql://localhost:3306/train_db"; //database location
+	private String ser = "jdbc:mysql://localhost:3306/bus_db"; //database location
 	private String user = "root"; //username for database
 	private String pass = "root"; // password for database
 	private ORB orb;
@@ -43,15 +43,16 @@ public class train_route extends CommPackagePOA{
 		StringBuilder result = new StringBuilder();
 		connectDb(); // Connect to the database
 		st = conn.createStatement();
-	    rs = st.executeQuery("select * from train_route WHERE source='" + source + "' AND destination='" + destination + "'");	    
+	    rs = st.executeQuery("select source, destination, time, cost from bus_route WHERE source='" + source + "' AND destination='" + destination + "'");	    
 	    int columns = rs.getMetaData().getColumnCount();
 	    
 	    while (rs.next()) {
-	        for (int i = 2; i <= columns; i++) {
+	        for (int i = 1; i <= columns; i++) {
 	            result.append(rs.getString(i) + " ");
 	        }
 	        result.append("\n");
 	    }
+	    System.out.println(result.toString());
 	    closeConnection();
 		return result.toString();
 	}
@@ -61,7 +62,7 @@ public class train_route extends CommPackagePOA{
 		      conn = DriverManager.getConnection(ser,user,pass); //connect to database
 		    } catch (SQLException ex) {
 		    	// handle any errors
-		    	Logger lgr = Logger.getLogger(train_route.class.getName()); //logger to log messages
+		    	Logger lgr = Logger.getLogger(bus_route.class.getName()); //logger to log messages
 	            lgr.log(Level.SEVERE, ex.getMessage(), ex);
 		    	ex.printStackTrace();
 		    } catch(Exception e){

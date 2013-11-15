@@ -1,6 +1,6 @@
 /*
  * @(#)CommPackagePOATie.java   13/10/20
- *
+ * 
  * Copyright (c) 2005 your company name
  *
  * License agreement text here ...

@@ -15,18 +15,19 @@ public class train_client {
 	        org.omg.CORBA.Object objRef = 
 	            orb.resolve_initial_references("NameService");
 	        // Use NamingContextExt instead of NamingContext. This is 
-	        // part of the InterOperable naming Service.  
+	        // part of the Interoperable naming Service.  
 	        NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
 	        
-	        // resolve the Object Reference in Naming
-	        String name = "Train_Server";
+	     // resolve the Object Reference in Naming
+	        String name = "train_route";
 	        trainRoute = CommPackageHelper.narrow(ncRef.resolve_str(name));
 
 	        System.out.println("Obtained a handle on server object: " + trainRoute);
-	        System.out.println(trainRoute.get_route("mccallum","bush_turn_pike"));
+	        System.out.println(trainRoute.get_route("mccallum","bush_trnpke"));
 	        trainRoute.shutdown();
 		} catch(Exception e){
 			e.printStackTrace();
 		}
 	}
 }
+

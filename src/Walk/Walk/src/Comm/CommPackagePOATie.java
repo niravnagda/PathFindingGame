@@ -1,24 +1,12 @@
-/*
- * @(#)CommPackagePOATie.java   13/10/20
- *
- * Copyright (c) 2005 your company name
- *
- * License agreement text here ...
- *
- *
- *
- */
-
-
-
 package Comm;
 
 /**
  * Interface definition: CommPackage.
- *
+ * 
  * @author OpenORB Compiler
  */
-public class CommPackagePOATie extends CommPackagePOA {
+public class CommPackagePOATie extends CommPackagePOA
+{
 
     //
     // Private reference to implementation object
@@ -33,14 +21,16 @@ public class CommPackagePOATie extends CommPackagePOA {
     /**
      * Constructor
      */
-    public CommPackagePOATie(CommPackageOperations tieObject) {
+    public CommPackagePOATie(CommPackageOperations tieObject)
+    {
         _tie = tieObject;
     }
 
     /**
      * Constructor
      */
-    public CommPackagePOATie(CommPackageOperations tieObject, org.omg.PortableServer.POA poa) {
+    public CommPackagePOATie(CommPackageOperations tieObject, org.omg.PortableServer.POA poa)
+    {
         _tie = tieObject;
         _poa = poa;
     }
@@ -48,42 +38,44 @@ public class CommPackagePOATie extends CommPackagePOA {
     /**
      * Get the delegate
      */
-    public CommPackageOperations _delegate() {
+    public CommPackageOperations _delegate()
+    {
         return _tie;
     }
 
     /**
      * Set the delegate
      */
-    public void _delegate(CommPackageOperations delegate_) {
+    public void _delegate(CommPackageOperations delegate_)
+    {
         _tie = delegate_;
     }
 
     /**
      * _default_POA method
      */
-    public org.omg.PortableServer.POA _default_POA() {
-        if (_poa != null) {
+    public org.omg.PortableServer.POA _default_POA()
+    {
+        if (_poa != null)
             return _poa;
-        } else {
+        else
             return super._default_POA();
-        }
     }
 
     /**
      * Operation get_route
      */
-    public String get_route(String source, String destination) {
-        return _tie.get_route(source, destination);
+    public String get_route(String source, String destination)
+    {
+        return _tie.get_route( source,  destination);
     }
 
     /**
      * Operation shutdown
      */
-    public void shutdown() {
+    public void shutdown()
+    {
         _tie.shutdown();
     }
+
 }
-
-
-//~ Formatted by Jindent --- http://www.jindent.com
